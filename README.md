@@ -12,7 +12,6 @@ node server.js 8001
 node server.js 8002
 
 ### 实现zhouwanwen.com:8001和jack.com:8002之间的JSONP请求需先修改hosts文件：
-<br>
 目录：C:\Windows\System32\drivers\etc下的hosts文件<br>
 右键记事本打开，添加如下在末尾：<br>
 127.0.0.1 zhouwanwen.com<br>
