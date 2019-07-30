@@ -65,22 +65,43 @@ var server = http.createServer(function (request, response) {
   //   response.end()
 
   //③
+  // else if (path === '/pay') {
+  //   var amount = fs.readFileSync('./db', 'utf8')
+  //   var newAmount = amount - 1
+  //   if (Math.random() > 0.5) {
+  //     fs.writeFileSync('./db', newAmount)
+  //     response.setHeader('Content-Type', 'application/javascript')
+  //     response.statusCode = 200
+  //     response.write(`
+  //     amount.innerText = amount.innerText - 1
+  //     `)
+  //   } else {
+  //     response.statusCode = 400
+  //     response.write('fail')
+  //   }
+  //   response.end()
+
+
+
   else if (path === '/pay') {
     var amount = fs.readFileSync('./db', 'utf8')
     var newAmount = amount - 1
-    if (Math.random() > 0.5) {
-      fs.writeFileSync('./db', newAmount)
-      response.setHeader('Content-Type', 'application/javascript')
-      response.statusCode = 200
-      response.write(`
-      amount.innerText = amount.innerText - 1
+    fs.writeFileSync('./db', newAmount)
+    response.setHeader('Content-Type', 'application/javascript')
+    response.statusCode = 200
+    // response.write(`
+    //   ${query.callback}.call(undefined,{
+    //     "success":true,
+    //     "left":${newAmount}
+    //   })
+    //   `)
+    response.write(`
+      ${query.callback}.call(undefined,'success')
       `)
-    }
-    else {
-      response.statusCode = 400
-      response.write('fail')
-    }
     response.end()
+
+
+
 
 
 
@@ -89,7 +110,7 @@ var server = http.createServer(function (request, response) {
   } else {
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write('找不到对应的路径，你需要自行修改index.js')
+    response.write('找不到对应的路径，你需要自行修改server.js')
     response.end()
   }
 
