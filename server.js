@@ -17,7 +17,7 @@ var server = http.createServer(function (request, response) {
   var query = parsedUrl.query
   var method = request.method
 
-  /******** 从这里开始看，上面不要看 ************/
+  /******** start ************/
 
   if (path === '/') {
     var string = fs.readFileSync('./index.html', 'utf8')
@@ -57,7 +57,7 @@ var server = http.createServer(function (request, response) {
   //     fs.writeFileSync('./db', newAmount)
   //     response.setHeader('Content-Type', 'image/jpg')
   //     response.statusCode = 200
-  //     response.write(fs.readFileSync('./dog.jpg'))
+  //     response.write(fs.readFileSync('./1.jpg'))
   //   } else {
   //     response.statusCode = 400
   //     response.write('fail')
@@ -101,11 +101,6 @@ var server = http.createServer(function (request, response) {
     response.end()
 
 
-
-
-
-
-
     //分隔
   } else {
     response.statusCode = 404
@@ -114,10 +109,8 @@ var server = http.createServer(function (request, response) {
     response.end()
   }
 
-  /******** 代码结束，下面不要看 ************/
+  /******** end ************/
 })
 
 server.listen(port)
 console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
-
-
